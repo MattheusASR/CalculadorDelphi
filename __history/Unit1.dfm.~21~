@@ -1,0 +1,211 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 222
+  ClientWidth = 350
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  OnKeyDown = FormKeyDown
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnSomar: TButton
+    Left = 225
+    Top = 156
+    Width = 31
+    Height = 25
+    Caption = '+'
+    TabOrder = 0
+    OnClick = btnSomarClick
+    OnKeyDown = btnKeyDown
+  end
+  object btnSubtrair: TButton
+    Left = 225
+    Top = 125
+    Width = 31
+    Height = 25
+    Caption = '-'
+    TabOrder = 1
+    OnClick = btnSubtrairClick
+    OnKeyDown = btnKeyDown
+  end
+  object btnDividir: TButton
+    Left = 225
+    Top = 91
+    Width = 31
+    Height = 27
+    Caption = '/'
+    TabOrder = 2
+    OnClick = btnDividirClick
+    OnKeyDown = btnKeyDown
+  end
+  object btn2: TButton
+    Left = 103
+    Top = 125
+    Width = 55
+    Height = 25
+    Caption = '2'
+    TabOrder = 3
+    OnClick = NumeroClick
+    OnKeyDown = btnKeyDown
+  end
+  object btn5: TButton
+    Left = 103
+    Top = 93
+    Width = 55
+    Height = 25
+    Caption = '5'
+    TabOrder = 4
+    OnClick = NumeroClick
+  end
+  object btn8: TButton
+    Left = 103
+    Top = 60
+    Width = 55
+    Height = 25
+    Caption = '8'
+    TabOrder = 5
+    OnClick = NumeroClick
+  end
+  object Button10: TButton
+    Left = 103
+    Top = 160
+    Width = 55
+    Height = 25
+    Caption = '0'
+    TabOrder = 6
+    OnClick = NumeroClick
+  end
+  object btn3: TButton
+    Left = 164
+    Top = 125
+    Width = 55
+    Height = 25
+    Caption = '3'
+    TabOrder = 7
+    OnClick = NumeroClick
+  end
+  object btn6: TButton
+    Left = 164
+    Top = 93
+    Width = 55
+    Height = 25
+    Caption = '6'
+    TabOrder = 8
+    OnClick = NumeroClick
+  end
+  object btn9: TButton
+    Left = 164
+    Top = 60
+    Width = 55
+    Height = 25
+    Caption = '9'
+    TabOrder = 9
+    OnClick = NumeroClick
+  end
+  object btnIgual: TButton
+    Left = 262
+    Top = 125
+    Width = 51
+    Height = 60
+    Caption = '='
+    TabOrder = 10
+    OnClick = btnIgualClick
+    OnKeyDown = btnKeyDown
+  end
+  object btn1: TButton
+    Left = 39
+    Top = 125
+    Width = 55
+    Height = 25
+    Caption = '1'
+    TabOrder = 11
+    OnClick = NumeroClick
+    OnKeyDown = btnKeyDown
+  end
+  object btn4: TButton
+    Left = 39
+    Top = 93
+    Width = 55
+    Height = 25
+    Caption = '4'
+    TabOrder = 12
+    OnClick = NumeroClick
+  end
+  object btn7: TButton
+    Left = 39
+    Top = 60
+    Width = 55
+    Height = 25
+    Caption = '7'
+    TabOrder = 13
+    OnClick = NumeroClick
+  end
+  object btnLimpar: TButton
+    Left = 164
+    Top = 160
+    Width = 55
+    Height = 25
+    Caption = '.'
+    TabOrder = 14
+    OnClick = btnPonto
+  end
+  object btnMultiplicar: TButton
+    Left = 225
+    Top = 60
+    Width = 31
+    Height = 25
+    Caption = 'x'
+    TabOrder = 15
+    OnClick = btnMultiplicarClick
+    OnKeyDown = btnKeyDown
+  end
+  object edtResultado: TEdit
+    Left = 39
+    Top = 16
+    Width = 217
+    Height = 38
+    BiDiMode = bdRightToLeft
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -25
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentBiDiMode = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 16
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 203
+    Width = 350
+    Height = 19
+    Panels = <>
+    ExplicitTop = 212
+    ExplicitWidth = 367
+  end
+  object Button1: TButton
+    Left = 262
+    Top = 60
+    Width = 51
+    Height = 58
+    Caption = 'Limpar'
+    TabOrder = 18
+    OnClick = btnLimparClick
+    OnKeyDown = btnKeyDown
+  end
+  object Button2: TButton
+    Left = 39
+    Top = 160
+    Width = 55
+    Height = 25
+    TabOrder = 19
+  end
+end

@@ -1,0 +1,188 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  System.ImageList, Vcl.ImgList, Vcl.ComCtrls, Vcl.ToolWin, Vcl.Menus, StrUtils;
+
+type
+  TForm1 = class(TForm)
+    btnSomar: TButton;
+    btnSubtrair: TButton;
+    btnDividir: TButton;
+    btn2: TButton;
+    btn5: TButton;
+    btn8: TButton;
+    button10: TButton;
+    btn3: TButton;
+    btn6: TButton;
+    btn9: TButton;
+    btnIgual: TButton;
+    btn1: TButton;
+    btn4: TButton;
+    btn7: TButton;
+    btnLimpar: TButton;
+    btnMultiplicar: TButton;
+    StatusBar1: TStatusBar;
+    Button1: TButton;
+    Button2: TButton;
+    edtResultado: TEdit;
+    procedure btnSomarClick(Sender: TObject);
+    procedure btnSubtrairClick(Sender: TObject);
+    procedure btnDividirClick(Sender: TObject);
+    procedure btnMultiplicarClick(Sender: TObject);
+    procedure NumeroClick(Sender: TObject);
+    procedure btnLimparClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnIgualClick(Sender: TObject);
+    procedure btnVirgula(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure AdicionarNumero(numero : char);
+  private
+  Operacao : Char;
+  Total : double;
+  FUltimoNum : Double;
+
+  procedure Calcular;
+  procedure Limpar;
+
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+
+
+procedure TForm1.btnIgualClick(Sender: TObject);
+begin
+  Calcular;
+end;
+
+procedure TForm1.btnLimparClick(Sender: TObject);
+begin
+  Limpar;
+end;
+
+procedure TForm1.btnDividirClick(Sender: TObject);
+begin
+
+  Calcular;
+  Operacao := '/';
+  edtResultado.Text := '';
+
+end;
+
+procedure TForm1.btnMultiplicarClick(Sender: TObject);
+begin
+  Calcular;
+
+  Operacao := '*';
+end;
+
+procedure TForm1.btnVirgula(Sender: TObject);
+begin
+ if NOT ContainsText(edtResultado.Text, ',') then
+  edtResultado.Text := edtResultado.Text + ',';
+
+end;
+
+procedure TForm1.btnSomarClick(Sender: TObject);
+begin
+  Calcular;
+
+  Operacao := '+';
+end;
+
+procedure TForm1.btnSubtrairClick(Sender: TObject);
+begin
+  Calcular;
+
+  Operacao := '-';
+end;
+
+procedure TForm1.NumeroClick(Sender: TObject);
+begin
+  AdicionarNumero(TButton(Sender).Caption[1]);
+end;
+
+procedure TForm1.AdicionarNumero(numero : char);
+begin
+  if FUltimoNum = 0 then
+    edtResultado.Text := numero
+  else
+    edtResultado.Text := edtResultado.Text + numero;
+
+  FUltimoNum := StrToFloat(edtResultado.Text);
+
+end;
+
+procedure TForm1.Calcular;
+begin
+  if (operacao = '') then
+    Total := StrToFloat(edtResultado.Text)
+  else
+    case Operacao of
+    '+' : Total := Total + StrToFloat(edtResultado.Text);
+    '-' : Total := Total - StrToFloat(edtResultado.Text);
+    '*' : Total := Total * StrToFloat(edtResultado.Text);
+    '/' : begin
+            if (StrToFloat(edtResultado.Text) <> 0) then
+              Total := Total / StrToFloat(edtResultado.Text)
+            else
+              showmessage('Não é possivel a divisão por zero.');
+          end;
+  end;
+
+  edtResultado.Text := FloatToStr(Total);
+
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  Limpar;
+end;
+
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Chr(key) in ['0'..'9'] then
+    AdicionarNumero(Chr(key));
+
+
+  if key = VK_ADD then btnSomarClick(Self);
+  if Key = VK_SUBTRACT then btnSubtrairClick(Self);
+  if key = VK_MULTIPLY then btnMultiplicarClick(Self);
+  if key = VK_DIVIDE then btnDividirClick(Self);
+  if key = VK_EXECUTE then btnIgualClick(Self);
+  if key = VK_DELETE then btnLimparClick(Self);
+  if key = VK_DECIMAL then btnVirgula(Self);
+  if key = VK_NUMPAD0 then button10.Click;
+  if key = VK_NUMPAD1 then btn1.Click;
+  if key = VK_NUMPAD2 then btn2.Click;
+  if key = VK_NUMPAD3 then btn3.Click;
+  if key = VK_NUMPAD4 then btn4.Click;
+  if key = VK_NUMPAD5 then btn5.Click;
+  if key = VK_NUMPAD6 then btn6.Click;
+  if key = VK_NUMPAD7 then btn7.Click;
+  if key = VK_NUMPAD8 then btn8.Click;
+  if key = VK_NUMPAD9 then btn9.Click;
+
+end;
+
+procedure TForm1.Limpar;
+begin
+  FUltimoNum := 0;
+  edtResultado.Text := '0';
+  Operacao := #0;
+  Total := 0;
+end;
+
+end.
